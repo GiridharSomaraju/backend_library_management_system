@@ -7,6 +7,16 @@ This is a backend REST API for a Library Management System built with **Node.js*
 Librarians can manage books and members, while members can browse, borrow, and return books. Authentication is handled with JWT, and passwords are hashed using bcrypt before being stored.
 
 ---
+## Live API
+
+Base URL:
+
+```
+https://backend-library-management-system-e8yh.onrender.com
+```
+
+---
+
 
 ## Features
 
@@ -75,7 +85,7 @@ npm install
 Create a `.env` file in the project root and add the following:
 
 ```env
-PORT=5000
+PORT=3000
 DB_HOST=localhost
 DB_PORT=5432
 DB_USER=your_postgres_username
