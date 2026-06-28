@@ -1,4 +1,4 @@
-# Library Management System API
+# 📚 Library Management System API
 
 ## About the Project
 
@@ -7,6 +7,7 @@ This is a backend REST API for a Library Management System built with **Node.js*
 Librarians can manage books and members, while members can browse, borrow, and return books. Authentication is handled with JWT, and passwords are hashed using bcrypt before being stored.
 
 ---
+
 ## Live API
 
 Base URL:
@@ -85,7 +86,7 @@ npm install
 Create a `.env` file in the project root and add the following:
 
 ```env
-PORT=3000
+PORT=5000
 DB_HOST=localhost
 DB_PORT=5432
 DB_USER=your_postgres_username
@@ -101,13 +102,13 @@ JWT_SECRET_KEY=your_secret_key
 1. Create a PostgreSQL database:
 
 ```sql
-CREATE DATABASE library_management_system;
+CREATE DATABASE library_management;
 ```
 
 2. Connect to the database:
 
 ```sql
-\c library_management_system
+\c library_management
 ```
 
 3. Create the required tables:
@@ -136,7 +137,7 @@ npm run dev
 The server runs on:
 
 ```
-http://localhost:3000
+http://localhost:5000
 ```
 
 ---
@@ -147,7 +148,7 @@ http://localhost:3000
 
 **Register**
 ```
-POST /register
+POST /api/auth/register
 ```
 Request Body:
 ```json
@@ -161,7 +162,7 @@ Request Body:
 
 **Login**
 ```
-POST /login
+POST /api/auth/login
 ```
 Request Body:
 ```json
@@ -175,32 +176,32 @@ Request Body:
 
 ### Books
 
-| Method | Endpoint     | Description           |
-|--------|--------------|------------------------|
-| GET    | /books       | Get all books          |
-| GET    | /books/:id   | Get a specific book    |
-| POST   | /books       | Add a new book         |
-| PUT    | /books/:id   | Update book details    |
-| DELETE | /books/:id   | Soft delete a book     |
+| Method | Endpoint          | Description           |
+|--------|-------------------|------------------------|
+| GET    | /api/books        | Get all books          |
+| GET    | /api/books/:id    | Get a specific book    |
+| POST   | /api/books        | Add a new book         |
+| PUT    | /api/books/:id    | Update book details    |
+| DELETE | /api/books/:id    | Soft delete a book     |
 
 ---
 
 ### Members
 
-| Method | Endpoint       | Description            |
-|--------|----------------|-------------------------|
-| GET    | /members       | Get all members         |
-| DELETE | /members/:id   | Soft delete a member    |
+| Method | Endpoint           | Description            |
+|--------|--------------------|--------------------------|
+| GET    | /api/members       | Get all members         |
+| DELETE | /api/members/:id   | Soft delete a member    |
 
 ---
 
 ### Borrow
 
-| Method | Endpoint      | Description             |
-|--------|---------------|--------------------------|
-| POST   | /borrow/:id   | Borrow a book            |
-| PATCH  | /return/:id   | Return a book            |
-| GET    | /my-books     | View borrowed books      |
+| Method | Endpoint                      | Description             |
+|--------|-------------------------------|--------------------------|
+| POST   | /api/books/:id/borrow        | Borrow a book            |
+| POST   | /api/books/:id/return        | Return a book            |
+| GET    | /api/members/me/books        | View borrowed books      |
 
 ---
 
