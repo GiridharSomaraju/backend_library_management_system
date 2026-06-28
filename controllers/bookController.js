@@ -188,8 +188,8 @@ const returnBook = async (req, res) => {
 
     await pool.query('Begin;');
 
-    const returnQuery = `UPDATE borrow_record SET status = $1,returndate = CURRENT_TIMESTAMP WHERE bookid = $1 AND memberid = $2`;
-    const resultQuery = await pool.query(returnQuery, [bookId,id,'returned']);
+    const returnQuery = `UPDATE borrow_record SET status = $1,returndate = CURRENT_TIMESTAMP WHERE bookid = $2 AND memberid = $3`;
+    const resultQuery = await pool.query(returnQuery, ['returned',bookId,id]);
 
     const reduceQuantity = `UPDATE books SET available_quantity = available_quantity + 1 WHERE id = $1`;
     await pool.query(reduceQuantity,[bookId]);
