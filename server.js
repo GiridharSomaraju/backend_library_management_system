@@ -13,8 +13,10 @@ app.use(express.json());
 
 app.get('/', (req, res) => {
   res.status(200).send({
+    project: 'Library Management System API',
+    version: '1.0.0',
     status: 'success',
-    message: 'Library management system API is running',
+    message: 'Welcome to the Library Management System API'
   });
 });
 
