@@ -4,17 +4,23 @@ const pool = require('./config/db');
 const express = require('express');
 
 //routes
-const userRoutes = require('./routes/authRoutes')
-const bookRoutes = require('./routes/bookRoutes')
-const memberRoutes = require('./routes/memberRoutes')
+const userRoutes = require('./routes/authRoutes');
+const bookRoutes = require('./routes/bookRoutes');
+const memberRoutes = require('./routes/memberRoutes');
 
 const app = express();
 app.use(express.json());
 
-app.use('/',userRoutes)
-app.use('/',bookRoutes)
-app.use('/',memberRoutes)
+app.get('/', (req, res) => {
+  res.status(200).send({
+    status: 'success',
+    message: 'Library management system API is running',
+  });
+});
 
+app.use('/', userRoutes);
+app.use('/', bookRoutes);
+app.use('/', memberRoutes);
 
 //server database connection
 const connectDBWithServer = async () => {
