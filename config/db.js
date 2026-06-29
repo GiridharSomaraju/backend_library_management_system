@@ -6,9 +6,10 @@ const pool = new Pool({
   password: process.env.DB_PASSWORD,
   port: process.env.DB_PORT,
   database: process.env.DB_DATABASE,
-  ssl: {
-    rejectUnauthorized: false,
-  },
+   ssl:
+    process.env.DB_HOST === "localhost"
+      ? false
+      : { rejectUnauthorized: false },
 });
 
 module.exports = pool;
